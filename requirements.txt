@@ -1,0 +1,11 @@
+pandas
+scikit-optimize
+numpy
+matplotlib
+xgboost
+scikit-learn == 0.23.2
+dash == 1.20.0
+dash-bootstrap-components == 0.12.2
+dash-trich-components
+dash_daq
+dash-loading-spinners
