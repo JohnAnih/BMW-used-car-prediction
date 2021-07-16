@@ -1,0 +1,62 @@
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.jumbotron {
+    background-size: cover;
+}
+
+.form-page {
+    padding: 1%;
+    margin: 19%;
+    margin-top: 3%;
+    background-color: rgb(63, 62, 61);
+}
+
+.dropdowns {
+    width: 65%
+}
+
+.year-slider {
+    padding: 4%;
+    margin-left: 5%;
+}
+
+.pad-bottom {
+    padding-bottom: 2%;
+    padding-left: 24%;
+}
+
+.submit-btn {
+    background-color: rgb(233, 50, 50);
+    color: white;
+    width: 35%;
+    padding: 1%;
+    margin-left: 30%;
+}
+
+.h3-additional-style {
+    background-color: blue;
+    color: white;
+    padding: 4%;
+}
+
+.price-style {
+    padding: 3%;
+    width: 50%;
+    margin: 0 auto;
+    border: 3px solid #070000;
+    background-color: #0a83ec;
+}
+
+.controls {
+    margin-left: 10%;
+    background-color: #28a745;
+}
+
+.control-lables {
+    color: white;
+    font-weight: bold;
+}
