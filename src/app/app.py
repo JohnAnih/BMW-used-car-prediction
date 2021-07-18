@@ -1,42 +1,51 @@
 import sys
+import pathlib
+
 import dash
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
-from frontend.home_page import create_navbar, create_home_page
-from frontend.prediction import create_car_info_page
-from frontend.utils import get_results, show_errror_msg
-from frontend.data_exploration import DataExploration
+from .frontend.home_page import create_navbar, create_home_page
+from .frontend.prediction import create_car_info_page
+from .frontend.utils import get_results, show_errror_msg
+from .frontend.data_exploration import DataExploration
 
-from backend.data_model import DataModel
-from backend.plotting import plot_data
+from .backend.data_model import DataModel
+from .backend.plotting import plot_data
 
 sys.path.append("../../src")
-from models.estimators import EnsembleModels
-from preprocessing.load_data import load_processed
+import src.models
+from src.models.estimators import EnsembleModels
+from src.preprocessing.load_data import load_processed
 
-MODEL_PATH = "../models/model_store/model.pkl"
-DATA = load_processed("../../data/bmw.csv")
+# set the models directory for the pickle file
+sys.modules['models'] = src.models
 
-app = dash.Dash(__name__, title="BMW Used Car Prediction", 
-                external_stylesheets=[dbc.themes.BOOTSTRAP],
-                #update_title="BMW Used Car Prediction"
-                )
+# get relative data folder
+PATH = pathlib.Path(__file__).parent
+DATA_PATH = PATH.joinpath("../../data").resolve()
+
+# get the path to the model pickle file
+MODEL_STORE = PATH.joinpath("../models/model_store").resolve()
+MODEL_PATH = MODEL_STORE.joinpath("model.pkl")
+
+DATA = load_processed(DATA_PATH.joinpath("bmw.csv"))
+
+app = dash.Dash(__name__, 
+                title="BMW Used Car Prediction", 
+                external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+server = app.server
 
 app.config.suppress_callback_exceptions = True
 
-
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
-
     create_navbar(),
-
-    # content will be rendered in this element
     html.Div(id='page-content')
 ])
-
 
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
@@ -52,7 +61,6 @@ def display_page(pathname):
     
     else:
         return "404 Not Found"
-
 
 @app.callback(
     Output('model-results', 'children'),
@@ -80,7 +88,6 @@ def make_prediction(click_submit, close_btn, mileage, transmission, fuel_type,
                                mpg=mpg, tax=tax, engine_class=engine_class, 
                                model_type=model_type, model_filepath=MODEL_PATH)
         prediction = data_model.predict_car_price()
-
         results = get_results(mileage, transmission, fuel_type, car_year, mpg, tax, 
                               engine_class, model_type, prediction)
     except:
@@ -102,4 +109,4 @@ def plot_historical_data(feature, split_by, plot_type):
     return plot_data(DATA, feature, split_by, plot_type)
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server()

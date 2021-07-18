@@ -1,3 +1,4 @@
+import sys
 import locale
 from datetime import datetime as dt
 
@@ -6,10 +7,10 @@ import pandas as pd
 
 locale.setlocale(locale.LC_ALL, '')
 
-
 class DataModel:
     def __init__(self, mileage: int, transmission: str, fuel_type: str, car_year: int, 
-                 mpg: int, tax: int, engine_class: str, model_type: str, model_filepath: str)-> None:
+                 mpg: int, tax: int, engine_class: str, model_type: str, 
+                 model_filepath: str)-> None:
         self.mileage = mileage
         self.transmission = transmission
         self.fuel_type = fuel_type
@@ -25,8 +26,9 @@ class DataModel:
         # load model
         self._load_model(model_filepath)
         
-    def _load_model(self, filepath: str)-> None:
-        self.model = pkl.load(open(filepath, 'rb'))
+    def _load_model(self, filepath)-> None:
+        with open(filepath, 'rb') as f:
+            self.model = pkl.load(f)
     
     def _create_datapoint(self)-> pd.DataFrame:
         return pd.DataFrame({"transmission": [self.transmission], 

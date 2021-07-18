@@ -1,6 +1,6 @@
 import logging
 import pandas as pd
-import preprocessing.prepare_data as data
+from src.preprocessing import prepare_data as data
 
 def load_processed(data_path: str):
     df = pd.read_csv(data_path)

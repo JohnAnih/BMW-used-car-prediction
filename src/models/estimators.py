@@ -72,8 +72,18 @@ class MLBase(BaseEstimator):
             feature_ranking.sort_values().plot(kind="barh", figsize=figsize)
     
     def save_model(self, filepath):
-        pkl.dump(self, open(filepath, 'wb'))
+        with open(filepath, 'wb') as f:
+            pkl.dump(self, f)
+        #pkl.dump(self, open(filepath, 'wb'))
         print(f"Successfully saved model -> {filepath}")
+        
+    def load_model(self, filepath):
+        with open(filepath, 'rb') as f:
+            model = pkl.load(f)
+        #model = pkl.load(open(filepath, 'rb'))
+        print(f"Successfully loaded the model stored at -> {filepath}")
+        return model
+        
 
 
 
