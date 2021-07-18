@@ -84,9 +84,6 @@ class MLBase(BaseEstimator):
         print(f"Successfully loaded the model stored at -> {filepath}")
         return model
         
-
-
-
 class MedianPredictor(MLBase):
     def __init__(self, data: pd.DataFrame):
         super(MedianPredictor, self).__init__(data)
