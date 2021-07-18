@@ -33,7 +33,7 @@ The project folder structure is described below:
 │   │   ├── __init__.py
 │   ├── models
 │   │   ├── model_store
-│   │   |    ├── model.pkl
+│   │   │    ├── model.pkl
 │   │   ├── __init__.py
 │   │   ├── base_estimator.py
 │   │   ├── compare_models.py
