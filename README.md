@@ -24,11 +24,11 @@ The project folder structure is described below:
 │   │   │    ├── data_model.py
 │   │   │    ├── plotting.py
 │   │   ├── frontend
-│   │   |    ├── __init__.py
-│   │   |    ├── data_exploration.py
-│   │   |    ├── home_page.py
-│   │   |    ├── prediction.py
-│   │   |    ├── utils.py
+│   │   │    ├── __init__.py
+│   │   │    ├── data_exploration.py
+│   │   │    ├── home_page.py
+│   │   │    ├── prediction.py
+│   │   │    ├── utils.py
 │   │   ├── app.py
 │   │   ├── __init__.py
 │   ├── models
