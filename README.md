@@ -20,9 +20,9 @@ The project folder structure is described below:
 │   ├── app
 │   │   ├── assets
 │   │   ├── backend
-│   │   |    ├── __init__.py
-│   │   |    ├── data_model.py
-│   │   |    ├── plotting.py
+│   │   │    ├── __init__.py
+│   │   │    ├── data_model.py
+│   │   │    ├── plotting.py
 │   │   ├── frontend
 │   │   |    ├── __init__.py
 │   │   |    ├── data_exploration.py
