@@ -54,11 +54,11 @@ The project folder structure is described below:
 ```
 
 > The data used for this project is available in the data folder.
-
+>
 > The notebook files are available in the notebook folder, the notebook files contains the exploratory data analysis, model training and comparison, project summaries and thought process.
-
+>
 > The src directory contains the app folder, the data preprocessing pipeline and the model training pipeline
-
+>
 > The app utlizes the Dash library to develop both the frontend and backend
 
 To see the live application demo please [click here](https://bmw-car-prediction.herokuapp.com/)
